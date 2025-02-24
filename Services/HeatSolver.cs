@@ -58,6 +58,10 @@ namespace Lab1.Services
             return 0;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="settings"></param>
         public void UpdateHeatSettings(HeatSettingsModel settings)
         {
             if (settings is null)
