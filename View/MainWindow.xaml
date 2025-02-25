@@ -264,23 +264,7 @@
                                DockPanel.Dock="Right"/>
                 </DockPanel>
             </Border>
-            
 
         </Grid>
-
-        <!--<Grid Grid.Column="1" Margin="15,10" Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="60"/>
-            </Grid.RowDefinitions>
-
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-            </Grid>
-        </Grid>-->
     </Grid>
 </Window>

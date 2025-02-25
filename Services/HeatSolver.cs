@@ -43,11 +43,13 @@ namespace Lab1.Services
 
         public double[][][] CalculateTemperature()
         {
+            InitializeTemperature();
             return null;
         }
 
         public double[][][] CalculateTemperatureParallel()
         {
+            InitializeTemperature();
             return null;
         }
 
@@ -87,7 +89,41 @@ namespace Lab1.Services
                     }
                 }
             });
+
             _uNew = _u = uTemp;
+
+            int iMax = _u.Length - 1;
+            int jMax = _u[0].Length - 1;
+            int kMax = _u[0][0].Length - 1;
+
+            Parallel.For(0, _iDim, i =>
+            {
+                for (int j = 0; j < _jDim; j++)
+                {
+                    _u[i][j][0] = _settings.Aboundary;
+                    _u[i][j][kMax] = _settings.AAboundary;
+                }
+            });
+
+            Parallel.For(0, _iDim, i =>
+            {
+                for (int k = 0; k < _kDim; k++)
+                {
+                    _u[i][0][k] = _settings.CCboundary;
+                    _u[i][jMax][k] = _settings.Cboundary;
+                }
+            });
+
+            Parallel.For(0, _jDim, j =>
+            {
+                for (int k = 0; k < _kDim; k++)
+                {
+                    _u[0][j][k] = _settings.Bboundary;
+                    _u[iMax][j][k] = _settings.BBboundary;
+                }
+            });
+
+            _uNew = _u;
         }
 
         #endregion
