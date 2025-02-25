@@ -32,6 +32,38 @@ namespace Lab1.ViewModel
 
         #endregion
 
+        #region Plots
+
+        /// <summary>
+        /// График на плоскости XY
+        /// </summary>
+        private PlaneModel planeXY;
+        public PlaneModel PlaneXY
+        {
+            get { return planeXY; }
+            set { planeXY = value; OnPropertyChanged(nameof(PlaneXY)); }
+        }
+        /// <summary>
+        /// График на плоскости XZ
+        /// </summary>
+        private PlaneModel planeXZ;
+        public PlaneModel PlaneXZ
+        {
+            get { return planeXZ; }
+            set { planeXZ = value; OnPropertyChanged(nameof(PlaneXZ)); }
+        }
+        /// <summary>
+        /// График на плоскости YZ
+        /// </summary>
+        private PlaneModel planeYZ;
+        public PlaneModel PlaneYZ
+        {
+            get { return planeYZ; }
+            set { planeYZ = value; OnPropertyChanged(nameof(PlaneYZ)); }
+        }
+
+        #endregion
+
         #region Свойства
 
         public string Aboundary
@@ -244,6 +276,9 @@ namespace Lab1.ViewModel
 
         public MainWindowViewModel()
         {
+            PlaneXY = new PlaneModel(100, "XY");
+            PlaneXZ = new PlaneModel(100, "XZ");
+            PlaneYZ = new PlaneModel(100, "YZ");
             _iParallepipedSize = _heatSettings.IParallepipedSize.ToString();
             _jParallepipedSize = _heatSettings.JParallepipedSize.ToString();
             _kParallepipedSize = _heatSettings.KParallepipedSize.ToString();
