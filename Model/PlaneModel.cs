@@ -44,8 +44,13 @@ namespace Lab1.Model
 
         #region Методы
 
-        public void UpdatePlotModel(double[,] data, int xSize, int ySize)
+        public void UpdatePlotModel(double[][] data, int xSize, int ySize)
         {
+            double[,] plotData = new double[xSize, ySize];
+            for (int i = 0; i < xSize; i++)
+                for (int j = 0; j < ySize; j++)
+                    plotData[i, j] = data[i][j];
+
             _plotModel.Series.Clear();
             var heatMap = new HeatMapSeries
             {
@@ -55,7 +60,7 @@ namespace Lab1.Model
                 Y1 = ySize / 2,
                 Interpolate = true,
                 RenderMethod = HeatMapRenderMethod.Bitmap,
-                Data = data
+                Data = plotData
             };
             _plotModel.Series.Add(heatMap);
             _plotModel.InvalidatePlot(true);

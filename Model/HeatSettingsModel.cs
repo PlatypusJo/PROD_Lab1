@@ -11,56 +11,49 @@ namespace Lab1.Model
 
         #region Поля
 
-        private double _aBoundary = 0;
-        private double _aaBoundary = 0;
-
-        private double _bBoundary = 0;
-        private double _bbBoundary = 0;
-
-        private double _cBoundary = 0;
-        private double _ccBoundary = 0;
-
-        // Размеры параллелепипеда в см
-        private double _iParallelepipedSize = 100;
-        private double _jParallelepipedSize = 100;
-        private double _kParallelepipedSize = 100;
-
-        // Шаги и коэффициент
-        private double h = 0.01;
-        private double tau = 0.01;
-        private double a = 0.03;
-
         private double _initTime = 0;
-        private double _maxTime;
-
-        // Условие устойчивости
-        private bool _isStable => (tau * a * a) / (h * h) < 0.125;
 
         #endregion
 
         #region Свойства
 
-        public int IDimSize => (int)(_iParallelepipedSize / h);
-        public int JDimSize => (int)(_jParallelepipedSize / h);
-        public int KDimSize => (int)(_kParallelepipedSize / h);
+        public int IDimSize => (int)(IParallepipedSize / H);
 
-        public double IParallepipedSize
-        {
-            get => _iParallelepipedSize;
-            set => _iParallelepipedSize = value;
-        }
-        
-        public double JParallepipedSize
-        {
-            get => _jParallelepipedSize;
-            set => _jParallelepipedSize = value;
-        }
-        
-        public double KParallepipedSize
-        {
-            get => _kParallelepipedSize;
-            set => _kParallelepipedSize = value;
-        }
+        public int JDimSize => (int)(JParallepipedSize / H);
+
+        public int KDimSize => (int)(KParallepipedSize / H);
+
+        // Размеры параллелепипеда в см
+        public double IParallepipedSize { get; set; } = 100;
+
+        public double JParallepipedSize { get; set; } = 100;
+
+        public double KParallepipedSize { get; set; } = 100;
+
+        // Границы
+        public double Aboundary { get; set; }
+
+        public double AAboundary { get; set; }
+
+        public double Bboundary { get; set; }
+
+        public double BBboundary { get; set; }
+
+        public double Cboundary { get; set; }
+
+        public double CCboundary { get; set; }
+
+        // Шаги и коэффициент 
+        public double H { get; set; } = 0.01;
+
+        public double Tau { get; set; } = 0.01;
+
+        public double Alfa { get; set; } = 0.03;
+
+        public double MaxTime { get; set; }
+
+        // Условие устойчивости
+        public bool IsStable => (Tau * Alfa * Alfa) / (H * H) < 0.125;
 
         #endregion
 
@@ -68,7 +61,7 @@ namespace Lab1.Model
 
         public HeatSettingsModel()
         {
-            
+
         }
 
         #endregion

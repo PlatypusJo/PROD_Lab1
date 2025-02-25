@@ -59,6 +59,13 @@ namespace Lab1.ViewModel
             }
         }
 
+        public MainWindowViewModel()
+        {
+            _iParallepipedSize = _heatSettings.IParallepipedSize.ToString();
+            _jParallepipedSize = _heatSettings.JParallepipedSize.ToString();
+            _kParallepipedSize = _heatSettings.KParallepipedSize.ToString();
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged(string propertyName)
         {
