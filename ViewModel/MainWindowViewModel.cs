@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Lab1.ViewModel
 {
-    class MainWindowViewModel
+    public class MainWindowViewModel
     {
+        #region Observable properties
+
+
+
+        #endregion
     }
 }
