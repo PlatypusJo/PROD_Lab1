@@ -244,6 +244,28 @@
             <oxycontrols:Plot x:Name="PlotXZ" Model="{Binding PlaneXZ.Plot, UpdateSourceTrigger=PropertyChanged}" Grid.Row="0" Grid.Column="1"></oxycontrols:Plot>
             <oxycontrols:Plot x:Name="PlotYZ" Model="{Binding PlaneYZ.Plot, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.ColumnSpan="2"></oxycontrols:Plot>
 
+            <Border Grid.ColumnSpan="2" 
+                    Grid.Row="2"
+                    BorderBrush="DarkCyan" 
+                    BorderThickness="1"
+                    Margin="10, 0, 0, 0">
+                <DockPanel LastChildFill="True">
+                    <TextBlock Text="Время:"
+                               FontFamily="Arial" 
+                               VerticalAlignment="Center"
+                               FontSize="14"
+                               Margin="10, 2"
+                               DockPanel.Dock="Left"/>
+                    <TextBlock Text="0,00000023324322352352"
+                               FontFamily="Arial" 
+                               FontSize="14"
+                               VerticalAlignment="Center"
+                               Margin="1, 2"
+                               DockPanel.Dock="Right"/>
+                </DockPanel>
+            </Border>
+            
+
         </Grid>
 
         <!--<Grid Grid.Column="1" Margin="15,10" Background="White">
