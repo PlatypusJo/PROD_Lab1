@@ -355,9 +355,9 @@ namespace Lab1.ViewModel
 
         public void UpdatePlots(double[][][] data)
         {
-            PlaneXY.UpdatePlotModel(data.GetDataCutXY(), _heatSettings.IParallepipedSize, _heatSettings.JParallepipedSize, _heatSettings.IDimSize, _heatSettings.JDimSize);
-            PlaneXZ.UpdatePlotModel(data.GetDataCutXZ(), _heatSettings.IParallepipedSize, _heatSettings.KParallepipedSize, _heatSettings.IDimSize, _heatSettings.KDimSize);
-            PlaneYZ.UpdatePlotModel(data.GetDataCutYZ(), _heatSettings.JParallepipedSize, _heatSettings.KParallepipedSize, _heatSettings.JDimSize, _heatSettings.KDimSize);
+            PlaneXY.UpdatePlotModel(data.GetDataCutXY(), _heatSettings.IDimSize, _heatSettings.JDimSize);
+            PlaneXZ.UpdatePlotModel(data.GetDataCutXZ(), _heatSettings.IDimSize, _heatSettings.KDimSize);
+            PlaneYZ.UpdatePlotModel(data.GetDataCutYZ(), _heatSettings.JDimSize, _heatSettings.KDimSize);
         }
 
         #endregion

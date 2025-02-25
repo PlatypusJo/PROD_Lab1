@@ -44,7 +44,7 @@ namespace Lab1.Model
 
         #region Методы
 
-        public void UpdatePlotModel(double[][] data, double xSize, double ySize, int xDim, int yDim)
+        public void UpdatePlotModel(double[][] data, int xDim, int yDim)
         {
             double[,] plotData = new double[xDim, yDim];
             for (int i = 0; i < xDim; i++)
