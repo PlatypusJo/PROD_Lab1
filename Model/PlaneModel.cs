@@ -44,11 +44,11 @@ namespace Lab1.Model
 
         #region Методы
 
-        public void UpdatePlotModel(double[][] data, int xSize, int ySize)
+        public void UpdatePlotModel(double[][] data, double xSize, double ySize, int xDim, int yDim)
         {
-            double[,] plotData = new double[xSize, ySize];
-            for (int i = 0; i < xSize; i++)
-                for (int j = 0; j < ySize; j++)
+            double[,] plotData = new double[xDim, yDim];
+            for (int i = 0; i < xDim; i++)
+                for (int j = 0; j < yDim; j++)
                     plotData[i, j] = data[i][j];
 
             _plotModel.Series.Clear();

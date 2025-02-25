@@ -24,11 +24,11 @@ namespace Lab1.Model
         public int KDimSize => (int)(KParallepipedSize / H);
 
         // Размеры параллелепипеда в см
-        public double IParallepipedSize { get; set; } = 10;
+        public double IParallepipedSize { get; set; } = 1;
 
-        public double JParallepipedSize { get; set; } = 10;
+        public double JParallepipedSize { get; set; } = 1;
 
-        public double KParallepipedSize { get; set; } = 10;
+        public double KParallepipedSize { get; set; } = 1;
 
         // Границы
         public double Aboundary { get; set; } = 1;

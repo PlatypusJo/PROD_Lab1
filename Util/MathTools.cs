@@ -11,9 +11,9 @@ namespace Lab1.Util
     {
         public static double[][] GetDataCutXY(this double[][][] origData)
         {
-            int xSize = origData.GetUpperBound(0) + 1;
-            int ySize = origData.GetUpperBound(1) + 1;
-            int k = (origData.GetUpperBound(2) + 1) / 2;
+            int xSize = origData.Length;
+            int ySize = origData[0].Length;
+            int k = origData[0][0].Length / 2;
 
             double[][] dataCut = new double[xSize][];
             for (int i = 0; i < xSize; i++)
@@ -28,9 +28,9 @@ namespace Lab1.Util
 
         public static double[][] GetDataCutXZ(this double[][][] origData)
         {
-            int xSize = origData.GetUpperBound(0) + 1;
-            int zSize = origData.GetUpperBound(2) + 1;
-            int j = (origData.GetUpperBound(1) + 1) / 2;
+            int xSize = origData.Length;
+            int zSize = origData[0][0].Length;
+            int j = origData[0].Length / 2;
 
             double[][] dataCut = new double[xSize][];
             for (int k = 0; k < zSize; k++)
@@ -45,9 +45,9 @@ namespace Lab1.Util
 
         public static double[][] GetDataCutYZ(this double[][][] origData)
         {
-            int ySize = origData.GetUpperBound(1) + 1;
-            int zSize = origData.GetUpperBound(2) + 1;
-            int i = (origData.GetUpperBound(0) + 1) / 2;
+            int ySize = origData[0].Length;
+            int zSize = origData[0][0].Length;
+            int i = origData.Length / 2;
 
             double[][] dataCut = new double[ySize][];
             for (int j = 0; j < ySize; i++)

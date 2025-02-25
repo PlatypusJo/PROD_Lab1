@@ -1,8 +1,11 @@
 ﻿using Lab1.Model;
+using Lab1.Services;
+using Lab1.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +15,8 @@ namespace Lab1.ViewModel
     {
         #region Поля
 
-        private HeatSettingsModel _heatSettings = new();
+        private HeatSettingsModel _heatSettings;
+        private HeatSolver _solver;
 
         private string _iParallepipedSize;
         private string _jParallepipedSize;
@@ -272,26 +276,72 @@ namespace Lab1.ViewModel
 
         #endregion
 
+        #region Команды
+
+        public RelayCommand SolveTaskCmd { get; set; }
+
+        public RelayCommand SolveTaskParallelCmd { get; set; }
+
+        #endregion
+
         #region Конструкторы
 
         public MainWindowViewModel()
         {
+            SolveTaskCmd = new RelayCommand(SolveTask);
+            SolveTaskParallelCmd = new RelayCommand(SolveTaskParallel);
+
+            _heatSettings = new();
+            _solver = new(_heatSettings);
+
             PlaneXY = new PlaneModel(100, "XY");
             PlaneXZ = new PlaneModel(100, "XZ");
             PlaneYZ = new PlaneModel(100, "YZ");
+
             _iParallepipedSize = _heatSettings.IParallepipedSize.ToString();
             _jParallepipedSize = _heatSettings.JParallepipedSize.ToString();
             _kParallepipedSize = _heatSettings.KParallepipedSize.ToString();
+
             _h = _heatSettings.H.ToString();
             _tau = _heatSettings.Tau.ToString();
             _a = _heatSettings.Alfa.ToString();
             _maxTime = _heatSettings.MaxTime.ToString();
+
             _aBoudary = _heatSettings.Aboundary.ToString();
             _aaBoudary = _heatSettings.AAboundary.ToString();
             _bBoudary = _heatSettings.Bboundary.ToString();
             _bbBoudary = _heatSettings.BBboundary.ToString();
             _cBoudary = _heatSettings.Cboundary.ToString();
             _ccBoudary = _heatSettings.CCboundary.ToString();
+        }
+
+        #endregion
+
+        #region Методы
+
+        public void SolveTask(object parameter)
+        {
+            _solver.UpdateHeatSettings(_heatSettings);
+            double[][][] data = _solver.CalculateTemperature();
+            UpdatePlots(data);
+        }
+
+        public void SolveTaskParallel(object parameter)
+        {
+            _solver.UpdateHeatSettings(_heatSettings);
+            double[][][] data = _solver.CalculateTemperatureParallel();
+            UpdatePlots(data);
+        }
+
+        #endregion
+
+        #region Внутренние методы
+
+        public void UpdatePlots(double[][][] data)
+        {
+            PlaneXY.UpdatePlotModel(data.GetDataCutXY(), _heatSettings.IParallepipedSize, _heatSettings.JParallepipedSize, _heatSettings.IDimSize, _heatSettings.JDimSize);
+            PlaneXZ.UpdatePlotModel(data.GetDataCutXZ(), _heatSettings.IParallepipedSize, _heatSettings.KParallepipedSize, _heatSettings.IDimSize, _heatSettings.KDimSize);
+            PlaneYZ.UpdatePlotModel(data.GetDataCutYZ(), _heatSettings.JParallepipedSize, _heatSettings.KParallepipedSize, _heatSettings.JDimSize, _heatSettings.KDimSize);
         }
 
         #endregion

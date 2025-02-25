@@ -35,17 +35,20 @@ namespace Lab1.Services
             _iDim = _settings.IDimSize;
             _jDim = _settings.JDimSize;
             _kDim = _settings.KDimSize;
-
-            InitializeTemperature();
         }
 
         #endregion
 
         #region Методы
 
-        public double CalculateTemperature()
+        public double[][][] CalculateTemperature()
         {
-            return 0;
+            return null;
+        }
+
+        public double[][][] CalculateTemperatureParallel()
+        {
+            return null;
         }
 
         /// <summary>
@@ -62,8 +65,6 @@ namespace Lab1.Services
             _iDim = _settings.IDimSize;
             _jDim = _settings.JDimSize;
             _kDim = _settings.KDimSize;
-
-            InitializeTemperature();
         }
 
         #endregion
