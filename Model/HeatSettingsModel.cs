@@ -24,24 +24,24 @@ namespace Lab1.Model
         public int KDimSize => (int)(KParallepipedSize / H);
 
         // Размеры параллелепипеда в см
-        public double IParallepipedSize { get; set; } = 100;
+        public double IParallepipedSize { get; set; } = 10;
 
-        public double JParallepipedSize { get; set; } = 100;
+        public double JParallepipedSize { get; set; } = 10;
 
-        public double KParallepipedSize { get; set; } = 100;
+        public double KParallepipedSize { get; set; } = 10;
 
         // Границы
-        public double Aboundary { get; set; }
+        public double Aboundary { get; set; } = 1;
 
-        public double AAboundary { get; set; }
+        public double AAboundary { get; set; } = 2;
 
-        public double Bboundary { get; set; }
+        public double Bboundary { get; set; } = 3;
 
-        public double BBboundary { get; set; }
+        public double BBboundary { get; set; } = 4;
 
-        public double Cboundary { get; set; }
+        public double Cboundary { get; set; } = 5;
 
-        public double CCboundary { get; set; }
+        public double CCboundary { get; set; } = 6;
 
         // Шаги и коэффициент 
         public double H { get; set; } = 0.01;
@@ -50,7 +50,7 @@ namespace Lab1.Model
 
         public double Alfa { get; set; } = 0.03;
 
-        public double MaxTime { get; set; }
+        public double MaxTime { get; set; } = 10;
 
         // Условие устойчивости
         public bool IsStable => (Tau * Alfa * Alfa) / (H * H) < 0.125;

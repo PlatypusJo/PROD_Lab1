@@ -200,7 +200,7 @@
                                 Text="(τ * α * α) / (h * h) &lt; 0.125"
                                 HorizontalAlignment="Center" Margin="0,10"/>
                                 <TextBlock  FontFamily="Arial" FontSize="20"
-                                Text="(true)"
+                                Text="{Binding IsStable}"
                                 HorizontalAlignment="Center" Margin="10,10"/>
                             </StackPanel>
 
@@ -208,10 +208,18 @@
                     </Border>
 
                     <StackPanel Margin="0, 10"
-                                Orientation="Horizontal">
+                                Orientation="Vertical">
                         <Button Width="200"
                                 Height="50"
+                                Margin="10"
+                                IsEnabled="{Binding IsStable}"
                                 Content="Решить"
+                                FontSize="20"/>
+                        <Button Width="200"
+                                Height="50"
+                                Margin="10"
+                                IsEnabled="{Binding IsStable}"
+                                Content="Решить параллельно"
                                 FontSize="20"/>
                     </StackPanel>
                     

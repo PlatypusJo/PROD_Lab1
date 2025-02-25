@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lab1.ViewModel
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
         #region Поля
 
@@ -180,6 +180,7 @@ namespace Lab1.ViewModel
                     _h = value;
                     _heatSettings.H = temp;
                     OnPropertyChanged(nameof(H));
+                    OnPropertyChanged(nameof(IsStable));
                 }
             }
         }
@@ -195,6 +196,7 @@ namespace Lab1.ViewModel
                     _tau = value;
                     _heatSettings.Tau = temp;
                     OnPropertyChanged(nameof(Tau));
+                    OnPropertyChanged(nameof(IsStable));
                 }
             }
         }
@@ -210,6 +212,7 @@ namespace Lab1.ViewModel
                     _a = value;
                     _heatSettings.Alfa = temp;
                     OnPropertyChanged(nameof(Alfa));
+                   OnPropertyChanged(nameof(IsStable));
                 }
             }
         }
@@ -229,6 +232,12 @@ namespace Lab1.ViewModel
             }
         }
 
+        public bool IsStable
+        {
+            get => _heatSettings.IsStable;
+            set => OnPropertyChanged(nameof(IsStable));
+        }
+
         #endregion
 
         #region Конструкторы
@@ -241,6 +250,13 @@ namespace Lab1.ViewModel
             _h = _heatSettings.H.ToString();
             _tau = _heatSettings.Tau.ToString();
             _a = _heatSettings.Alfa.ToString();
+            _maxTime = _heatSettings.MaxTime.ToString();
+            _aBoudary = _heatSettings.Aboundary.ToString();
+            _aaBoudary = _heatSettings.AAboundary.ToString();
+            _bBoudary = _heatSettings.Bboundary.ToString();
+            _bbBoudary = _heatSettings.BBboundary.ToString();
+            _cBoudary = _heatSettings.Cboundary.ToString();
+            _ccBoudary = _heatSettings.CCboundary.ToString();
         }
 
         #endregion
