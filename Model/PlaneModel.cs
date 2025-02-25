@@ -47,7 +47,7 @@ namespace Lab1.Model
         public void UpdatePlotModel(double[,] data, int xSize, int ySize)
         {
             _plotModel.Series.Clear();
-            var heatMap = new OxyPlot.Series.HeatMapSeries
+            var heatMap = new HeatMapSeries
             {
                 X0 = 0,
                 X1 = xSize / 2,

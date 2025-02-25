@@ -12,9 +12,9 @@ namespace Lab1.Services
     {
         #region Поля
 
-        private double[,,] _u;
+        private double[][][] _u;
 
-        private double[,,] _uNew;
+        private double[][][] _uNew;
 
         private int _iDim;
 
@@ -42,16 +42,6 @@ namespace Lab1.Services
         #endregion
 
         #region Методы
-
-        public double[,,,] Step()
-        {
-            return null;
-        }
-
-        public double[,,,] StepParallel()
-        {
-            return null;
-        }
 
         public double CalculateTemperature()
         {
@@ -82,14 +72,21 @@ namespace Lab1.Services
 
         private void InitializeTemperature()
         {
-            _u = new double[_iDim, _jDim, _kDim];
+            double[][][] uTemp = new double[_iDim][][];
 
-            for (int i = 0; i < _iDim; i++)
+            Parallel.For(0, _iDim, i =>
+            {
+                uTemp[i] = new double[_jDim][];
                 for (int j = 0; j < _jDim; j++)
+                {
+                    uTemp[i][j] = new double[_kDim];
                     for (int k = 0; k < _kDim; k++)
-                        _u[i, j, k] = 0;
-
-            _uNew = _u;
+                    {
+                        uTemp[i][j][k] = 0;
+                    }
+                }
+            });
+            _uNew = _u = uTemp;
         }
 
         #endregion

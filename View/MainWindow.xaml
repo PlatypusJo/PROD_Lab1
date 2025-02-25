@@ -35,14 +35,6 @@
                            Text=":"
                            HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="i+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="j+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
@@ -52,14 +44,6 @@
                            HorizontalAlignment="Left" Margin="0,10" Width="40"/>
                             <TextBlock FontFamily="Arial" FontSize="20"
                            Text=":"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="i+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="j+"
                            HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Margin="3,10" Width="60"/>
                         </StackPanel>
@@ -73,14 +57,6 @@
                            Text=":"
                            HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="j+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="k+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
@@ -90,14 +66,6 @@
                            HorizontalAlignment="Left" Margin="0,10" Width="40"/>
                             <TextBlock FontFamily="Arial" FontSize="20"
                            Text=":"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="j+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="k+"
                            HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Margin="3,10" Width="60"/>
                         </StackPanel>
@@ -111,14 +79,6 @@
                            Text=":"
                            HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="i+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="k+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
                         </StackPanel>
                     </Border>
                     <Border BorderBrush="DarkCyan" BorderThickness="1" Padding="5,0" Margin="0,5">
@@ -128,14 +88,6 @@
                            HorizontalAlignment="Left" Margin="0,10" Width="40"/>
                             <TextBlock FontFamily="Arial" FontSize="20"
                            Text=":"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="i+"
-                           HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Margin="3,10" Width="60"/>
-                            <TextBlock FontFamily="Arial" FontSize="20"
-                           Text="k+"
                            HorizontalAlignment="Left" Margin="0,10"/>
                             <TextBox Margin="3,10" Width="60"/>
                         </StackPanel>
@@ -161,22 +113,28 @@
                            FontFamily="Arial" FontSize="20"
                            Text="iActualSize"
                            HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Grid.Row="0" Grid.Column="1" 
-                         Margin="0,10" />
+                            <TextBox Grid.Row="0" 
+                                     Grid.Column="1" 
+                                     Margin="0,10" 
+                                     Text="{Binding IParallepipedSize, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                             <TextBlock Grid.Row="1" Grid.Column="0" 
                            FontFamily="Arial" FontSize="20"
                            Text="jActualSize"
                            HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" 
-                         Margin="0,10" />
+                            <TextBox Grid.Row="1"
+                                     Grid.Column="1" 
+                                     Margin="0,10" 
+                                     Text="{Binding JParallepipedSize, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
 
                             <TextBlock Grid.Row="2" Grid.Column="0" 
                            FontFamily="Arial" FontSize="20"
                            Text="kActualSize"
                            HorizontalAlignment="Left" Margin="0,10"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" 
-                         Margin="0,10" />
+                            <TextBox Grid.Row="2" 
+                                     Grid.Column="1" 
+                                     Margin="0,10"
+                                     Text="{Binding KParallepipedSize, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"/>
                         </Grid>
                     </Border>
 

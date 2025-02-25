@@ -44,6 +44,24 @@ namespace Lab1.Model
         public int JDimSize => (int)(_jParallelepipedSize / h);
         public int KDimSize => (int)(_kParallelepipedSize / h);
 
+        public double IParallepipedSize
+        {
+            get => _iParallelepipedSize;
+            set => _iParallelepipedSize = value;
+        }
+        
+        public double JParallepipedSize
+        {
+            get => _jParallelepipedSize;
+            set => _jParallelepipedSize = value;
+        }
+        
+        public double KParallepipedSize
+        {
+            get => _kParallelepipedSize;
+            set => _kParallelepipedSize = value;
+        }
+
         #endregion
 
         #region Конструктор
