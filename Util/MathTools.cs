@@ -33,8 +33,8 @@ namespace Lab1.Util
             int j = origData[0].Length / 2;
 
             double[][] dataCut = new double[xSize][];
-            for (int k = 0; k < zSize; k++)
-                dataCut[j] = new double[zSize];
+            for (int k = 0; k < xSize; k++)
+                dataCut[k] = new double[zSize];
 
             for (int i = 0; i < xSize; i++)
                 for (int k = 0; k < zSize; k++)
@@ -50,7 +50,7 @@ namespace Lab1.Util
             int i = origData.Length / 2;
 
             double[][] dataCut = new double[ySize][];
-            for (int j = 0; j < ySize; i++)
+            for (int j = 0; j < ySize; j++)
                 dataCut[j] = new double[zSize];
 
             for (int j = 0; j < ySize; j++)

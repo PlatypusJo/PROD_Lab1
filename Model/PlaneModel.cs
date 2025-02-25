@@ -55,9 +55,9 @@ namespace Lab1.Model
             var heatMap = new HeatMapSeries
             {
                 X0 = 0,
-                X1 = xSize / 2,
+                X1 = xDim / 2,
                 Y0 = 0,
-                Y1 = ySize / 2,
+                Y1 = yDim / 2,
                 Interpolate = true,
                 RenderMethod = HeatMapRenderMethod.Bitmap,
                 Data = plotData

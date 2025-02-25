@@ -1,6 +1,7 @@
 ﻿using Lab1.Model;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
@@ -22,6 +23,8 @@ namespace Lab1.Services
 
         private int _kDim;
 
+        private double _initTime = 0;
+
         private HeatSettingsModel _settings;
 
         #endregion
@@ -41,22 +44,62 @@ namespace Lab1.Services
 
         #region Методы
 
-        public double[][][] CalculateTemperature()
+        public double[][][] CalculateTemperature(out double executionTime)
         {
             InitializeTemperature();
-            return null;
+
+            double coeff = (_settings.Tau * _settings.Alfa * _settings.Alfa) / _settings.H * _settings.H;
+
+            Stopwatch timer = new();
+            timer.Start();
+
+            for (double t = _initTime; t < _settings.MaxTime; t += _settings.Tau)
+            {
+                for (int i = 1; i < _iDim - 1; i++)
+                    for (int j = 1; j < _jDim - 1; j++)
+                        for (int k = 1; k < _kDim - 1; k++)
+                            _uNew[i][j][k] = _u[i][j][k] + coeff *
+                                (_u[i + 1][j][k] + _u[i - 1][j][k] + _u[i][j + 1][k] +
+                                _u[i][j - 1][k] + _u[i][j][k + 1] + _u[i][j][k - 1] - 6 * _u[i][j][k]);
+
+                CopyArray(_uNew, _u);
+            }
+
+            timer.Stop();
+            executionTime = timer.Elapsed.TotalMilliseconds / 1000;
+
+            return _u;
         }
 
-        public double[][][] CalculateTemperatureParallel()
+        public double[][][] CalculateTemperatureParallel(out double executionTime)
         {
             InitializeTemperature();
-            return null;
+            double coeff = (_settings.Tau * _settings.Alfa * _settings.Alfa) / _settings.H * _settings.H;
+
+            Stopwatch timer = new();
+            timer.Start();
+
+
+            for (double t = _initTime; t < _settings.MaxTime; t += _settings.Tau)
+            {
+                Parallel.For(1, _iDim - 1, i =>
+                {
+                    for (int j = 1; j < _jDim - 1; j++)
+                        for (int k = 1; k < _kDim - 1; k++)
+                            _uNew[i][j][k] = _u[i][j][k] + coeff *
+                                (_u[i + 1][j][k] + _u[i - 1][j][k] + _u[i][j + 1][k] +
+                                _u[i][j - 1][k] + _u[i][j][k + 1] + _u[i][j][k - 1] - 6 * _u[i][j][k]);
+                });
+
+                CopyArray(_uNew, _u);
+            }
+            
+            timer.Stop();
+            executionTime = timer.Elapsed.TotalMilliseconds / 1000;
+
+            return _u;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="settings"></param>
         public void UpdateHeatSettings(HeatSettingsModel settings)
         {
             if (settings is null)
@@ -73,28 +116,38 @@ namespace Lab1.Services
 
         #region Внутренние методы
 
+        private void CopyArray(double[][][] src, double[][][] dst)
+        {
+            for (int i = 0; i < _iDim; i++)
+                for (int j = 0; j < _jDim; j++)
+                    for (int k = 0; k < _kDim; k++)
+                        dst[i][j][k] = src[i][j][k];
+        }
+
         private void InitializeTemperature()
         {
-            double[][][] uTemp = new double[_iDim][][];
+            _u = new double[_iDim][][];
+            _uNew = new double[_iDim][][];
 
             Parallel.For(0, _iDim, i =>
             {
-                uTemp[i] = new double[_jDim][];
+                _u[i] = new double[_jDim][];
+                _uNew[i] = new double[_jDim][];
                 for (int j = 0; j < _jDim; j++)
                 {
-                    uTemp[i][j] = new double[_kDim];
+                    _u[i][j] = new double[_kDim];
+                    _uNew[i][j] = new double[_kDim];
                     for (int k = 0; k < _kDim; k++)
                     {
-                        uTemp[i][j][k] = 0;
+                        _u[i][j][k] = 0;
+                        _uNew[i][j][k] = 0;
                     }
                 }
             });
 
-            _uNew = _u = uTemp;
-
-            int iMax = _u.Length - 1;
-            int jMax = _u[0].Length - 1;
-            int kMax = _u[0][0].Length - 1;
+            int iMax = _iDim - 1;
+            int jMax = _jDim - 1;
+            int kMax = _kDim - 1;
 
             Parallel.For(0, _iDim, i =>
             {
@@ -123,10 +176,10 @@ namespace Lab1.Services
                 }
             });
 
-            _uNew = _u;
+            CopyArray(_u, _uNew);
         }
 
         #endregion
-
+        
     }
 }

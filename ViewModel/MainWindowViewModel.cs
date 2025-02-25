@@ -34,6 +34,8 @@ namespace Lab1.ViewModel
         private string _a;
         private string _maxTime;
 
+        private string _executionTime;
+
         #endregion
 
         #region Plots
@@ -69,6 +71,16 @@ namespace Lab1.ViewModel
         #endregion
 
         #region Свойства
+
+        public string ExecutionTime
+        {
+            get => _executionTime;
+            set
+            {
+                _executionTime = value;
+                OnPropertyChanged(nameof(ExecutionTime));
+            }
+        }
 
         public string Aboundary
         {
@@ -108,7 +120,7 @@ namespace Lab1.ViewModel
                 double temp;
                 if (double.TryParse(value, out temp) || double.TryParse(value + "0", out temp))
                 {
-                    _aaBoudary = value;
+                    _bBoudary = value;
                     _heatSettings.Bboundary = temp;
                     OnPropertyChanged(nameof(Bboundary));
                 }
@@ -294,9 +306,9 @@ namespace Lab1.ViewModel
             _heatSettings = new();
             _solver = new(_heatSettings);
 
-            PlaneXY = new PlaneModel(100, "XY");
-            PlaneXZ = new PlaneModel(100, "XZ");
-            PlaneYZ = new PlaneModel(100, "YZ");
+            PlaneXY = new PlaneModel(30, "XY");
+            PlaneXZ = new PlaneModel(30, "XZ");
+            PlaneYZ = new PlaneModel(30, "YZ");
 
             _iParallepipedSize = _heatSettings.IParallepipedSize.ToString();
             _jParallepipedSize = _heatSettings.JParallepipedSize.ToString();
@@ -313,6 +325,8 @@ namespace Lab1.ViewModel
             _bbBoudary = _heatSettings.BBboundary.ToString();
             _cBoudary = _heatSettings.Cboundary.ToString();
             _ccBoudary = _heatSettings.CCboundary.ToString();
+
+            _executionTime = "0,0";
         }
 
         #endregion
@@ -322,14 +336,16 @@ namespace Lab1.ViewModel
         public void SolveTask(object parameter)
         {
             _solver.UpdateHeatSettings(_heatSettings);
-            double[][][] data = _solver.CalculateTemperature();
+            double[][][] data = _solver.CalculateTemperature(out double execTime);
+            ExecutionTime = execTime.ToString();
             UpdatePlots(data);
         }
 
         public void SolveTaskParallel(object parameter)
         {
             _solver.UpdateHeatSettings(_heatSettings);
-            double[][][] data = _solver.CalculateTemperatureParallel();
+            double[][][] data = _solver.CalculateTemperatureParallel(out double execTime);
+            ExecutionTime = execTime.ToString();
             UpdatePlots(data);
         }
 

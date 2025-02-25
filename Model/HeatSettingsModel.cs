@@ -8,13 +8,6 @@ namespace Lab1.Model
 {
     public class HeatSettingsModel
     {
-
-        #region Поля
-
-        private double _initTime = 0;
-
-        #endregion
-
         #region Свойства
 
         public int IDimSize => (int)(IParallepipedSize / H);
@@ -24,24 +17,24 @@ namespace Lab1.Model
         public int KDimSize => (int)(KParallepipedSize / H);
 
         // Размеры параллелепипеда в см
-        public double IParallepipedSize { get; set; } = 1;
+        public double IParallepipedSize { get; set; } = 0.1;
 
-        public double JParallepipedSize { get; set; } = 1;
+        public double JParallepipedSize { get; set; } = 0.1;
 
-        public double KParallepipedSize { get; set; } = 1;
+        public double KParallepipedSize { get; set; } = 0.1;
 
         // Границы
-        public double Aboundary { get; set; } = 1;
+        public double Aboundary { get; set; } = 4;
 
-        public double AAboundary { get; set; } = 2;
+        public double AAboundary { get; set; } = 4;
 
-        public double Bboundary { get; set; } = 3;
+        public double Bboundary { get; set; } = 4;
 
         public double BBboundary { get; set; } = 4;
 
-        public double Cboundary { get; set; } = 5;
+        public double Cboundary { get; set; } = 4;
 
-        public double CCboundary { get; set; } = 6;
+        public double CCboundary { get; set; } = 4;
 
         // Шаги и коэффициент 
         public double H { get; set; } = 0.01;
